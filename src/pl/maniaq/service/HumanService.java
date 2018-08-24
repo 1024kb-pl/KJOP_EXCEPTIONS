@@ -19,6 +19,7 @@ public class HumanService {
     public void addHuman(String name, String lastName) throws HumanLastNameWrongFormat, HumanNameWrongFormat {
         if (HumanValidator.isHumanLastNameCorrect(lastName) && HumanValidator.isHumanNameCorrect(name)) {
             Human human = new Human(getNextHumanId(), name, lastName);
+            humans.add(human);
         }
     }
 
@@ -34,7 +35,7 @@ public class HumanService {
                 return human;
             }
         }
-        throw new HumanNotFoundException("Human with id: " + id + " not found");
+        throw new HumanNotFoundException("Human with id: " + id + " not found.");
     }
 
     public Human getHumanByLastName(String lastName) throws HumanNotFoundException {
@@ -45,6 +46,6 @@ public class HumanService {
                 return human;
             }
         }
-        throw new HumanNotFoundException("Human with lastname: " + lastName + " not found");
+        throw new HumanNotFoundException("Human with lastname: " + lastName + " not found.");
     }
 }
